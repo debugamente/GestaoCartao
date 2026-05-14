@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cores</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 20px; color: #333; }
+        .container-cadastro { background-color: #ffffff; max-width: 1000px; margin: 0 auto; border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding-bottom: 20px; }
+        .titulo-principal { background: linear-gradient(180deg, rgba(0,158,224,1) 0%, rgba(0,123,176,1) 100%); color: white; padding: 10px 15px; font-size: 18px; font-weight: bold; margin: 0; border-top: 1px solid #0056b3; }
+        .subtitulo-azul { color: #0076a3; font-size: 16px; font-style: italic; font-weight: bold; padding: 15px 15px 5px 15px; margin: 0; border-bottom: 2px solid #00a8e1; margin-bottom: 15px; }
+        .grid-formulario { display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px 15px; padding: 0 15px; }
+        .grupo-campo { display: flex; flex-direction: column; }
+        .grupo-campo label { font-size: 13px; margin-bottom: 3px; color: #444; }
+        .obrigatorio { color: #cc0000; font-weight: bold; margin-right: 2px; }
+        .grupo-campo input { padding: 6px 8px; border: 1px solid #ccc; border-radius: 3px; font-size: 13px; background-color: #f9f9f9; }
+        .campo-codigo { grid-column: span 3; }
+        .campo-nome { grid-column: span 9; }
+        .area-botoes { margin-top: 30px; padding: 0 15px; display: flex; gap: 10px; justify-content: flex-end; }
+        .btn { padding: 8px 25px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 13px; color: white; }
+        .btn-incluir { background-color: #007bff; }
+        .btn-salvar { background-color: #28a745; }
+        .btn-voltar { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+<div class="container-cadastro">
+    <h1 class="titulo-principal">Cadastros Auxiliares</h1>
+    <h2 class="subtitulo-azul">Cadastro da Cor</h2>
+    <form class="grid-formulario">
+        <div class="grupo-campo campo-codigo">
+            <label><span class="obrigatorio">*</span> Código:</label>
+            <input type="text" name="codigo_cor">
+        </div>
+        <div class="grupo-campo campo-nome">
+            <label>Nome da Cor:</label>
+            <input type="text" name="nome_cor" placeholder="Ex: Azul, Vermelho, Verde...">
+        </div>
+    </form>
+    <div class="area-botoes">
+        <button type="button" class="btn btn-incluir">Incluir</button>
+        <button type="button" class="btn btn-salvar">Salvar</button>
+        <button type="button" class="btn btn-voltar">Voltar</button>
+    </div>
+</div>
+</body>
+</html>

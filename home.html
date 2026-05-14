@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão - Home</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 240px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+            overflow-y: auto; /* Permite scroll se o menu for grande */
+        }
+
+        .user-info {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .user-info .user-name {
+            display: block;
+            font-weight: bold;
+            color: #0076a3;
+            font-size: 15px;
+        }
+
+        /* Menu Principal */
+        .menu-item {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f1f1;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item:hover { background-color: #e6f4f9; color: #0076a3; }
+        .menu-item.active {
+            background-color: #009ee0;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* --- SUBMENU --- */
+        .submenu {
+            display: none; 
+            background-color: #f9f9f9;
+        }
+
+        .submenu.show {
+            display: block;
+        }
+
+        .submenu-item {
+            padding: 12px 20px 12px 40px; 
+            text-decoration: none;
+            color: #666;
+            font-size: 13px;
+            cursor: pointer;
+            display: block;
+            border-bottom: 1px solid #eee;
+            transition: 0.2s;
+        }
+
+        .submenu-item:hover { background-color: #d1ecf1; color: #0076a3; }
+        .submenu-item.active { color: #0076a3; font-weight: bold; background-color: #e6f4f9; }
+
+        /* Seta do Dropdown */
+        .seta::after {
+            content: '▼';
+            font-size: 10px;
+        }
+
+        /* --- CONTEÚDO --- */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            height: 50px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+        }
+
+        .btn-logout {
+            color: #dc3545;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .content-area {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+        }
+
+        .card-sistema {
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .titulo-principal {
+            background: linear-gradient(180deg, rgba(0,158,224,1) 0%, rgba(0,123,176,1) 100%);
+            color: white;
+            padding: 12px 15px;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        #container-dinamico {
+            flex: 1;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="sidebar">
+    <div class="user-info">
+        <small>Bem-vindo(a),</small>
+        <span class="user-name">MICHELE</span>
+    </div>
+
+    <div class="menu-item active" onclick="carregar('cliente')">Clientes</div>
+    <div class="menu-item" onclick="carregar('produtos')">Produtos</div>
+    <div class="menu-item" onclick="carregar('financeiro')">Financeiro</div>
+
+    <div class="menu-item seta" onclick="toggleSubmenu('sub-cadastros')">Cadastros Auxiliares</div>
+    <div class="submenu" id="sub-cadastros">
+        <div class="submenu-item" onclick="carregar('marca')">Marca</div>
+        <div class="submenu-item" onclick="carregar('cor')">Cor</div>
+        <div class="submenu-item" onclick="carregar('tamanho')">Tamanho</div>
+        <div class="submenu-item" onclick="carregar('lojas')">Lojas</div>
+        <div class="submenu-item" onclick="carregar('cartoes')">Cartões</div>
+    </div>
+
+    <div class="menu-item seta" onclick="toggleSubmenu('sub-relatorios')">Relatórios</div>
+    <div class="submenu" id="sub-relatorios">
+        <div class="submenu-item" onclick="carregar('relatorio1')">Relatório 1</div>
+        <div class="submenu-item" onclick="carregar('relatorio2')">Relatório 2</div>
+        <div class="submenu-item" onclick="carregar('relatorio3')">Relatório 3</div>
+    </div>
+
+    <div class="menu-item" onclick="carregar('espaco')">Espaço Vazio</div>
+</nav>
+
+<div class="main-container">
+    <header class="top-bar">
+        <a href="/logout" class="btn-logout">Sair do Sistema</a>
+    </header>
+
+    <main class="content-area">
+        <div class="card-sistema">
+            <h1 class="titulo-principal" id="label-titulo">Clientes</h1>
+            <div id="container-dinamico">
+                <iframe id="frame-conteudo" src="/cliente/cadastro"></iframe>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Função genérica para abrir/fechar submenus pelo ID
+    function toggleSubmenu(id) {
+        const sub = document.getElementById(id);
+        // Fecha outros submenus se quiser um comportamento de "sanfona"
+        // document.querySelectorAll('.submenu').forEach(s => { if(s.id !== id) s.classList.remove('show'); });
+        sub.classList.toggle('show');
+    }
+
+    function carregar(pagina) {
+        // 1. Atualiza visual do menu lateral
+        document.querySelectorAll('.menu-item, .submenu-item').forEach(m => m.classList.remove('active'));
+
+        if (event) {
+            event.currentTarget.classList.add('active');
+        }
+
+        // 2. Atualiza o título
+        document.getElementById('label-titulo').innerText = pagina.toUpperCase();
+
+        // 3. Muda a página dentro do iframe
+        const frame = document.getElementById('frame-conteudo');
+
+        switch(pagina) {
+            case 'cliente': frame.src = '/cliente/cadastro'; break;
+            case 'produtos': frame.src = '/produtos/cadastro'; break;
+            case 'financeiro': frame.src = '/financeiro/lancamento'; break;
+            case 'lojas': frame.src = '/lojas/cadastro'; break;
+            case 'marca': frame.src = '/marca/cadastro'; break;
+            case 'cor': frame.src = '/cores/cadastro'; break;
+            case 'tamanho': frame.src = '/tamanho/cadastro'; break;
+            case 'cartoes': frame.src = '/cartao/cadastro'; break;
+            // Exemplo para os relatórios
+            case 'relatorio1': frame.src = '/relatorios/Compras'; break;
+            case 'relatorio2': frame.src = '/relatorios/Debitos'; break;
+            case 'relatorio3': frame.src = '/relatorios/LimiteCartao'; break;
+            default:
+                console.log("Página não encontrada: " + pagina);
+        }
+    }
+</script>
+</body>
+</html>
