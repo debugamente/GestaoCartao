@@ -154,30 +154,30 @@
 <nav class="sidebar">
     <div class="user-info">
         <small>Bem-vindo(a),</small>
-        <span class="user-name">MICHELE</span>
+        <span class="user-name">USUARIO</span>
     </div>
 
-    <div class="menu-item active" onclick="carregar('cliente')">Clientes</div>
-    <div class="menu-item" onclick="carregar('produtos')">Produtos</div>
-    <div class="menu-item" onclick="carregar('financeiro')">Financeiro</div>
+    <div class="menu-item active" onclick="carregar('cliente' , event)">Clientes</div>
+    <div class="menu-item" onclick="carregar('produtos' , event)">Produtos</div>
+    <div class="menu-item" onclick="carregar('financeiro', event)">Financeiro</div>
 
     <div class="menu-item seta" onclick="toggleSubmenu('sub-cadastros')">Cadastros Auxiliares</div>
     <div class="submenu" id="sub-cadastros">
-        <div class="submenu-item" onclick="carregar('marca')">Marca</div>
-        <div class="submenu-item" onclick="carregar('cor')">Cor</div>
-        <div class="submenu-item" onclick="carregar('tamanho')">Tamanho</div>
-        <div class="submenu-item" onclick="carregar('lojas')">Lojas</div>
-        <div class="submenu-item" onclick="carregar('cartoes')">Cartões</div>
+        <div class="submenu-item" onclick="carregar('marca', event)">Marca</div>
+        <div class="submenu-item" onclick="carregar('cor', event)">Cor</div>
+        <div class="submenu-item" onclick="carregar('tamanho', event)">Tamanho</div>
+        <div class="submenu-item" onclick="carregar('lojas', event)">Lojas</div>
+        <div class="submenu-item" onclick="carregar('cartoes', event)">Cartões</div>
     </div>
 
-    <div class="menu-item seta" onclick="toggleSubmenu('sub-relatorios')">Relatórios</div>
+    <div class="menu-item seta" onclick="toggleSubmenu('sub-relatorios', event)">Relatórios</div>
     <div class="submenu" id="sub-relatorios">
-        <div class="submenu-item" onclick="carregar('relatorio1')">Relatório 1</div>
-        <div class="submenu-item" onclick="carregar('relatorio2')">Relatório 2</div>
-        <div class="submenu-item" onclick="carregar('relatorio3')">Relatório 3</div>
+        <div class="submenu-item" onclick="carregar('relatorio1', event)">Relatório 1</div>
+        <div class="submenu-item" onclick="carregar('relatorio2', event)">Relatório 2</div>
+        <div class="submenu-item" onclick="carregar('relatorio3', event)">Relatório 3</div>
     </div>
 
-    <div class="menu-item" onclick="carregar('espaco')">Espaço Vazio</div>
+    <div class="menu-item" onclick="carregar('espaco', event)">Espaço Vazio</div>
 </nav>
 
 <div class="main-container">
@@ -194,47 +194,6 @@
         </div>
     </main>
 </div>
-
-<script>
-    // Função genérica para abrir/fechar submenus pelo ID
-    function toggleSubmenu(id) {
-        const sub = document.getElementById(id);
-        // Fecha outros submenus se quiser um comportamento de "sanfona"
-        // document.querySelectorAll('.submenu').forEach(s => { if(s.id !== id) s.classList.remove('show'); });
-        sub.classList.toggle('show');
-    }
-
-    function carregar(pagina) {
-        // 1. Atualiza visual do menu lateral
-        document.querySelectorAll('.menu-item, .submenu-item').forEach(m => m.classList.remove('active'));
-
-        if (event) {
-            event.currentTarget.classList.add('active');
-        }
-
-        // 2. Atualiza o título
-        document.getElementById('label-titulo').innerText = pagina.toUpperCase();
-
-        // 3. Muda a página dentro do iframe
-        const frame = document.getElementById('frame-conteudo');
-
-        switch(pagina) {
-            case 'cliente': frame.src = '/cliente/cadastro'; break;
-            case 'produtos': frame.src = '/produtos/cadastro'; break;
-            case 'financeiro': frame.src = '/financeiro/lancamento'; break;
-            case 'lojas': frame.src = '/lojas/cadastro'; break;
-            case 'marca': frame.src = '/marca/cadastro'; break;
-            case 'cor': frame.src = '/cores/cadastro'; break;
-            case 'tamanho': frame.src = '/tamanho/cadastro'; break;
-            case 'cartoes': frame.src = '/cartao/cadastro'; break;
-            // Exemplo para os relatórios
-            case 'relatorio1': frame.src = '/relatorios/Compras'; break;
-            case 'relatorio2': frame.src = '/relatorios/Debitos'; break;
-            case 'relatorio3': frame.src = '/relatorios/LimiteCartao'; break;
-            default:
-                console.log("Página não encontrada: " + pagina);
-        }
-    }
-</script>
+<script src="js/abreMenus.js"></script>
 </body>
 </html>
