@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Clientes</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Cadastro de Produtos</title>
     <style>
-        /* Estilos Globais */
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: #f4f4f4;
@@ -24,7 +22,6 @@
             padding-bottom: 20px;
         }
 
-        /* Cabeçalho acompanhando o estilo azul do financeiro */
         .titulo-principal {
             background: linear-gradient(180deg, rgba(0,158,224,1) 0%, rgba(0,123,176,1) 100%);
             color: white;
@@ -46,7 +43,6 @@
             margin-bottom: 15px;
         }
 
-        /* Estrutura de Grade */
         .grid-formulario {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -71,7 +67,8 @@
             margin-right: 2px;
         }
 
-        .grupo-campo input {
+        .grupo-campo input, 
+        .grupo-campo select {
             padding: 6px 8px;
             border: 1px solid #ccc;
             border-radius: 3px;
@@ -82,17 +79,30 @@
 
         .campo-codigo input { background-color: #ffffff; }
 
-        .grupo-campo input:focus {
+        .grupo-campo input:focus,
+        .grupo-campo select:focus {
             border-color: #007bff;
             outline: none;
             background-color: #fff;
         }
 
-        /* Definição das colunas para os 2 campos */
-        .campo-codigo { grid-column: span 3; }
-        .campo-nome   { grid-column: span 9; }
+        /* Definição de colunas */
+        .campo-codigo   { grid-column: span 2; }
+        .campo-nome     { grid-column: span 6; }
+        .campo-marca    { grid-column: span 4; }
 
-        /* Área de Botões (Alinhados à Direita) */
+        .campo-tamanho  { grid-column: span 3; }
+        .campo-cor      { grid-column: span 3; }
+        .campo-loja     { grid-column: span 6; }
+        .valorcompra    { grid-column: span 4; }
+        .campo-datacompra { grid-column: span 4; }
+        .campo-tipopagamento { grid-column: span 4; }
+        .campo-cartao   { grid-column: span 4; }
+        .campo-cashback { grid-column: span 4; }
+        .campo-categoria { grid-column: span 4; }
+
+        .campo-observacao   { grid-column: span 12; }
+
         .area-botoes {
             margin-top: 30px;
             padding: 0 15px;
@@ -112,17 +122,18 @@
             transition: filter 0.3s;
         }
 
-        .btn-incluir { background-color: #007bff; }
+        .btn-incluir   { background-color: #007bff; }
+        .btn-salvar    { background-color: #28a745; }
         .btn-consultar { background-color: #6c757d; }
-        .btn-salvar { background-color: #28a745; }
-		.btn-voltar { background-color: #dc3545; }
+        .btn-voltar    { background-color: #dc3545; }
 
         .btn:hover { filter: brightness(90%); }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             .grid-formulario { grid-template-columns: 1fr; }
-            .campo-codigo, .campo-nome { grid-column: span 1; }
+            .campo-codigo, .campo-nome, .campo-marca, 
+            .campo-tamanho, .campo-cor, .campo-loja, 
+            .campo-observacao { grid-column: span 1; }
             .area-botoes { flex-direction: column; }
             .btn { width: 100%; }
         }
@@ -131,26 +142,61 @@
 <body>
 
 <div class="container-cadastro">
-    <h1 class="titulo-principal">Cadastro</h1>
-    <h2 class="subtitulo-azul">Cadastro de Clientes</h2>
+    <h1 class="titulo-principal">Financeiro</h1>
+    <h2 class="subtitulo-azul">Lançamento Financeiro</h2>
 
     <form class="grid-formulario">
         <div class="grupo-campo campo-codigo">
             <label><span class="obrigatorio">*</span> Código:</label>
-            <input type="text" name="codigo_cliente">
+            <input type="text" name="codigo_financeiro">
+        </div>
+        <div class="grupo-campo campo-loja">
+            <label>Nome da Loja</label>
+            <input type="text" name="nome_loja">
+        </div>
+           <div class="grupo-campo campo-valorcompra">
+            <label>Valor da Compra:</label>
+            <input type="number" name="valorcompra" step="0.01">
+        </div>
+         <div class="grupo-campo campo-datacompra">
+            <label>Data da Compra:</label>
+            <input type="date" name="datacompra">
+        </div>
+         <div class="grupo-campo campo-tipopagamento">
+            <label>Pagamento</label>
+            <select name="tipopagamento">
+                <option value="">Selecione...</option>
+                </select>
+        </div>
+        <div class="grupo-campo campo-cartao">
+            <label>Cartao:</label>
+            <select name="cartao">
+                <option value="">Selecione...</option>
+                </select>
+        </div>
+        <div class="grupo-campo campo-cashback">
+            <label>Cashback:</label>
+            <input type="number" name="cashback" step="0.01">
+        </div>
+       
+        <div class="grupo-campo campo-categoria">
+            <label>Categoria</label>
+            <select name="categoria">
+                <option value="">Selecione...</option>
+                </select>
         </div>
 
-        <div class="grupo-campo campo-nome">
-            <label>Nome Cliente:</label>
-            <input type="text" name="nome_cliente">
+        <div class="grupo-campo campo-observacao">
+            <label>Observacao (Máx. 100 caracteres):</label>
+            <input type="text" name="observacao" maxlength="100" placeholder="Detalhes da compra">
         </div>
     </form>
 
     <div class="area-botoes">
         <button type="button" class="btn btn-incluir">Incluir</button>
         <button type="button" class="btn btn-salvar">Salvar</button>
-		<button type="button" class="btn btn-consultar">Consultar</button>
-		<button type="button" class="btn btn-voltar">Voltar</button>
+        <button type="button" class="btn btn-consultar">Consultar</button>
+        <button type="button" class="btn btn-voltar">Voltar</button>
     </div>
 </div>
 

@@ -1,19 +1,143 @@
-body {
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding-top: 50px;
-}
 
-h1 {
-    color: #6c63ff;
-}
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-button {
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-}
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 240px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+            overflow-y: auto; /* Permite scroll se o menu for grande */
+        }
+
+        .user-info {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        .user-info .user-name {
+            display: block;
+            font-weight: bold;
+            color: #0076a3;
+            font-size: 15px;
+        }
+
+        /* Menu Principal */
+        .menu-item {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f1f1;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item:hover { background-color: #e6f4f9; color: #0076a3; }
+        .menu-item.active {
+            background-color: #009ee0;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* --- SUBMENU --- */
+        .submenu {
+            display: none; 
+            background-color: #f9f9f9;
+        }
+
+        .submenu.show {
+            display: block;
+        }
+
+        .submenu-item {
+            padding: 12px 20px 12px 40px; 
+            text-decoration: none;
+            color: #666;
+            font-size: 13px;
+            cursor: pointer;
+            display: block;
+            border-bottom: 1px solid #eee;
+            transition: 0.2s;
+        }
+
+        .submenu-item:hover { background-color: #d1ecf1; color: #0076a3; }
+        .submenu-item.active { color: #0076a3; font-weight: bold; background-color: #e6f4f9; }
+
+        /* Seta do Dropdown */
+        .seta::after {
+            content: '▼';
+            font-size: 10px;
+        }
+
+        /* --- CONTEÚDO --- */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            height: 50px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+        }
+
+        .btn-logout {
+            color: #dc3545;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .content-area {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+        }
+
+        .card-sistema {
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .titulo-principal {
+            background: linear-gradient(180deg, rgba(0,158,224,1) 0%, rgba(0,123,176,1) 100%);
+            color: white;
+            padding: 12px 15px;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        #container-dinamico {
+            flex: 1;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
