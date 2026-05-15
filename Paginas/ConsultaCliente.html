@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestão de Eventos</title>
+    <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="Grids.css">
+</head>
+<body>
+
+<div class="window">
+    <div class="header">
+        <span>Evento</span>
+        <button class="close-btn">X</button>
+    </div>
+
+    <div class="filter-section">
+        <div class="form-grid">
+            <div class="grupo-campo">
+                <label>Identificador:</label>
+                <input type="text">
+            </div>
+            <div class="grupo-campo span-2">
+                <label>Descrição:</label>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="checkbox-group">
+            <label><input type="checkbox"> Check box 1</label>
+            <label><input type="checkbox"> Check box 2</label>
+            <label><input type="checkbox"> Check box 3</label>
+        </div>
+
+        <div class="area-botoes">
+		<button type="button" class="btn btn-consultar">Consultar</button>
+    </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>N.</th>
+                    <th>Identificador</th>
+                    <th>Descrição</th>
+                    <th>Prioridade Visualização</th>
+                    <th>Ordem Cálculo</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1101</td>
+                    <td>VENCIMENTO</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td><button class="edit-btn"><i class="fa-solid fa-eye"></i></button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>1103</td>
+                    <td>INC.VENC.URP 02/89</td>
+                    <td>1103</td>
+                    <td>273</td>
+                    <td><button class="edit-btn"><i class="fa-solid fa-eye"></i></button></td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <span class="page active">1</span>
+        <span class="page">2</span>
+        <span class="page">3</span>
+        <span class="page">4</span>
+        <span class="page">5</span>
+        <span class="nav-btn">»</span>
+        <span class="nav-btn">»»</span>
+    </div>
+</div>
+
+</body>
+</html>

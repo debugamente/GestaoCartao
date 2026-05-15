@@ -1,0 +1,37 @@
+/* Grids.css - Focado apenas em Posicionamento */
+
+.window {
+    max-width: 900px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr; 
+    gap: 15px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.table-container {
+    padding: 0 15px;
+}
+
+table {
+    width: 100%;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
