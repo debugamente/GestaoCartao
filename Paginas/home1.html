@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sistema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        
+        <header class="topo">
+            <div class="logo">
+                <h2><i class="fa-solid fa-layer-group"></i> Nome do Sistema </h2>
+            </div>
+            <div class="user-info">
+                <span>Olá, <strong>Usuário</strong></span>
+                <i class="fa-solid fa-circle-user fa-lg"></i>
+            </div>
+        </header>
+
+        <aside class="sidebar">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span><i class="fa-solid fa-users"></i> Clientes</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span><i class="fa-solid fa-box-open"></i> Produtos</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span><i class="fa-solid fa-dollar-sign"></i> Financeiro</span>
+                    </a>
+                </li>
+
+                <li class="menu-item has-submenu" id="btn-cadastros">
+                    <div class="menu-link">
+                        <span><i class="fa-solid fa-folder-plus"></i> Cadastros Auxiliares</span>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </div>
+                    <ul class="submenu">
+                        <li><a href="#" class="menu-link">Marca</a></li>
+                        <li><a href="#" class="menu-link">Cor</a></li>
+                        <li><a href="#" class="menu-link">Tamanho</a></li>
+                        <li><a href="#" class="menu-link">Lojas</a></li>
+                        <li><a href="#" class="menu-link">Cartões</a></li>
+                        <li><a href="#" class="menu-link">Bandeiras</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <span><i class="fa-solid fa-chart-line"></i> Relatórios</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+       
+
+        <footer class="rodape">
+            <p>&copy; 2026 Sistema Gestão de Cartão - Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.getElementById('btn-cadastros').addEventListener('click', function(e) {
+            this.classList.toggle('open');
+        });
+        
+        const submenuLinks = document.querySelectorAll('.submenu .menu-link');
+        submenuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation(); 
+            });
+        });
+    </script>
+
+</body>
+</html>

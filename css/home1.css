@@ -1,0 +1,148 @@
+
+        /* Configurações de Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Layout Principal com Grid */
+        .wrapper {
+            display: grid;
+            grid-template-rows: 60px 1fr 40px;
+            grid-template-columns: 260px 1fr;
+            grid-template-areas: 
+                "topo topo"
+                "sidebar conteudo"
+                "rodape rodape";
+            height: 100vh;
+        }
+
+        /* --- TOPO --- */
+        .topo {
+            grid-area: topo;
+            background-color: #0088cc; /* Azul Corporativo do Print */
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .logo h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* --- MENU LATERAL (SIDEBAR) --- */
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #f0f0f0; /* Cinza claro do Print */
+            border-right: 1px solid #cccccc;
+            overflow-y: auto;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            color: #333333; /* Texto escuro para fundo claro */
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .menu-link i:first-child {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+            color: #0088cc; /* Ícones no azul do tema */
+        }
+
+        .menu-link:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Submenu */
+        .submenu {
+            list-style: none;
+            background-color: #dcdcdc; /* Cinza um pouco mais escuro para destaque */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .submenu .menu-link {
+            padding-left: 45px;
+            font-size: 0.9rem;
+            border-bottom: none;
+        }
+
+        .has-submenu .arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* Classes ativas via JavaScript */
+        .has-submenu.open .arrow {
+            transform: rotate(90deg);
+        }
+        
+        .has-submenu.open .submenu {
+            max-height: 300px;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        .conteudo {
+            grid-area: conteudo;
+            background-color: #ffffff; /* Fundo branco */
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* Estilo do painel centralizado parecido com o seu print */
+        .card-sistema {
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            background-color: #0088cc;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-body h1 {
+            color: #0077b3;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- RODAPÉ --- */
+        .rodape {
+            grid-area: rodape;
+            background-color: #0088cc;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
